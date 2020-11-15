@@ -7,6 +7,8 @@ package ohtu;
 
 import com.google.gson.Gson;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import org.apache.http.client.fluent.Request;
 
 public class Main {
@@ -20,13 +22,20 @@ public class Main {
 
         Gson mapper = new Gson();
         Player[] players = mapper.fromJson(bodyText, Player[].class);
+        ArrayList<Player> fin = new ArrayList<>();
         
-        System.out.println("Suomalaiset pelaajat:");
+        System.out.println("Suomalaiset pelaajat:\n");
         for (Player player : players) {
             if (player.getNationality().equals("FIN")) {
-                System.out.println(player);
+                fin.add(player);
             }
-        }   
+        }
+        
+        Collections.sort(fin);
+        
+        fin.forEach((pelaaja) -> {
+            System.out.println(pelaaja.toString());
+        });
     }
   
 }
