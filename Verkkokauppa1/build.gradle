@@ -1,4 +1,5 @@
 plugins {
+    id 'java'
     id  'application'
 }
 
@@ -7,8 +8,9 @@ repositories {
 }
 
 dependencies {
-    def springVersion = '5.2.9.RELEASE'
+    testCompile 'org.mockito:mockito-core:3.1.0'
     testImplementation 'junit:junit:4.13'
+    def springVersion = '5.2.9.RELEASE'
     implementation 'com.google.guava:guava:29.0-jre'
     compile group: 'org.springframework', name: 'spring-core', version: springVersion
     compile group: 'org.springframework', name: 'spring-context', version: springVersion
@@ -16,7 +18,9 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-beans', version: springVersion
 }
 
-mainClassName = 'ohtu.Main'
+application {
+    mainClass = 'ohtu.Main'
+}
 
 run {
     standardInput = System.in

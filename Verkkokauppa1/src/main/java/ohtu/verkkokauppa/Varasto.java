@@ -17,7 +17,7 @@ public class Varasto implements VarastoRajapinta {
     private KirjanpitoRajapinta kirjanpito;
     private HashMap<Tuote, Integer> saldot;  
     
-    private Varasto(KirjanpitoRajapinta k) {
+    public Varasto(KirjanpitoRajapinta k) {
         kirjanpito = k;
         saldot = new HashMap<Tuote, Integer>();
         alustaTuotteet();
