@@ -13,10 +13,17 @@ public class Main {
                              new PlaysIn("PHI")
         ); */
         
-        System.out.println(stats.matches(new All()).size());
-        
-        /* for (Player player : stats.matches(m)) {
+        Matcher m = new And(
+            new HasAtLeast(50, "points"),
+            new Or( 
+                new PlaysIn("NYR"),
+                new PlaysIn("NYI"),
+                new PlaysIn("BOS")
+            )
+        );
+
+        for (Player player : stats.matches(m)) {
             System.out.println(player);
-        } */
+        }
     }
 }
