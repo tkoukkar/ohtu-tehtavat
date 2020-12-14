@@ -5,6 +5,7 @@
  */
 package statistics;
 
+import java.util.ArrayList;
 import statistics.matcher.*;
 
 /**
@@ -13,6 +14,7 @@ import statistics.matcher.*;
  */
 public class QueryBuilder {
     Matcher matcher;
+    
     
     public QueryBuilder() {
         this.matcher = new All();
@@ -34,6 +36,19 @@ public class QueryBuilder {
     
     public QueryBuilder hasFewerThan(int value, String category) {
         this.matcher = new And(this.matcher, new HasFewerThan(value, category));
+        return this;
+    }
+    
+    public QueryBuilder oneOf(Matcher... matchers) {
+        int i = 1;
+        
+        for (Matcher m : matchers) {
+            System.out.println(i);
+            i++;
+        }
+        
+        this.matcher = new Or(matchers);
+        
         return this;
     }
 }
